@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WitsAgora — Privacy Policy</title>
+  <meta name="description" content="Informativa sulla privacy dell'app WitsAgora — WitsAgora privacy policy.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="./privacy.html">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #1a1a1a;
+      --muted: #5a5a5a;
+      --accent: #3b5bdb;
+      --border: #e5e5e5;
+      --code-bg: #f4f4f6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #14151a;
+        --fg: #ececec;
+        --muted: #a0a0a8;
+        --accent: #8aa6ff;
+        --border: #2a2c33;
+        --code-bg: #1d1e23;
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 24px 96px;
+    }
+    header.site {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }
+    header.site .brand {
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    header.site h1 {
+      margin: 0;
+      font-size: 32px;
+      line-height: 1.2;
+      font-weight: 700;
+    }
+    header.site .updated {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 4px;
+    }
+    .lang-switch {
+      display: inline-flex;
+      gap: 4px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 3px;
+      margin-top: 16px;
+      align-self: flex-start;
+    }
+    .lang-switch button {
+      background: transparent;
+      color: var(--fg);
+      border: 0;
+      padding: 6px 14px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .lang-switch button[aria-pressed="true"] {
+      background: var(--accent);
+      color: #fff;
+    }
+    article h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 40px 0 12px;
+      line-height: 1.3;
+    }
+    article h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin: 24px 0 8px;
+    }
+    article p { margin: 0 0 14px; }
+    article ul {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+    article li { margin: 6px 0; }
+    article a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    article a:hover { text-decoration: none; }
+    article code {
+      background: var(--code-bg);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 0.92em;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    .lang { display: none; }
+    .lang.active { display: block; }
+    footer.site {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    footer.site a { color: var(--muted); }
+    @media (max-width: 540px) {
+      body { font-size: 16px; }
+      main { padding: 28px 18px 64px; }
+      header.site h1 { font-size: 26px; }
+      article h2 { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="site">
+      <span class="brand">WitsAgora</span>
+      <h1 id="title-it" class="title">Informativa sulla privacy</h1>
+      <h1 id="title-en" class="title" hidden>Privacy Policy</h1>
+      <div class="updated">
+        <span id="updated-it">Ultimo aggiornamento: 11 maggio 2026</span>
+        <span id="updated-en" hidden>Last updated: 11 May 2026</span>
+      </div>
+      <div class="lang-switch" role="group" aria-label="Lingua / Language">
+        <button type="button" data-lang="it" aria-pressed="true">Italiano</button>
+        <button type="button" data-lang="en" aria-pressed="false">English</button>
+      </div>
+    </header>
+
+    <article>
+      <!-- ITALIANO -->
+      <section class="lang active" data-lang="it" lang="it">
+        <p>Questa informativa spiega quali informazioni l'app mobile WitsAgora raccoglie, come vengono utilizzate e quali scelte hai a disposizione. WitsAgora è pubblicata dallo sviluppatore che opera con il nome <strong>zipangulu</strong> (lo "Sviluppatore", "noi").</p>
+
+        <h2>1. In sintesi</h2>
+        <ul>
+          <li>WitsAgora è un party game offline. <strong>Non richiede registrazione, accesso o alcuna informazione personale.</strong></li>
+          <li>Tutti i dati delle partite — giocatori, punteggi, cronologia — sono salvati <strong>solo sul tuo dispositivo</strong>.</li>
+          <li>L'app utilizza <strong>Google AdMob</strong> per mostrare annunci interstiziali tra una partita e l'altra e <strong>Firebase Crashlytics / Analytics</strong> per rilevare i crash e misurare l'utilizzo aggregato.</li>
+          <li>Nelle giurisdizioni in cui è richiesto (SEE, Regno Unito, Svizzera) al primo avvio compare una finestra di consenso che ti permette di accettare o rifiutare la pubblicità personalizzata. Puoi modificare questa scelta in qualsiasi momento da <strong>Impostazioni &rarr; Scelte sulla privacy</strong>.</li>
+        </ul>
+
+        <h2>2. Informazioni gestite dall'app</h2>
+        <p>L'app gestisce le seguenti informazioni <strong>solo localmente sul tuo dispositivo</strong>:</p>
+        <ul>
+          <li>I nomi che digiti per i giocatori della partita (testo libero, mai verificato rispetto a un'identità reale).</li>
+          <li>Gli avatar scelti per quei giocatori.</li>
+          <li>La configurazione della partita (round, durata dei turni, modalità di voto).</li>
+          <li>La cronologia delle partite (round giocati, voti, punteggi finali) — salvata in un database SQLite locale.</li>
+        </ul>
+        <p>Questi dati <strong>non vengono mai</strong> trasmessi allo Sviluppatore né a terzi. Disinstallando l'app vengono rimossi.</p>
+
+        <h2>3. Informazioni trattate da SDK di terze parti</h2>
+        <p>WitsAgora integra le seguenti SDK di terze parti. Ciascuna opera secondo la propria informativa sulla privacy.</p>
+
+        <h3>3.1 Google AdMob (pubblicità)</h3>
+        <ul>
+          <li>Finalità: mostrare annunci interstiziali tra le partite.</li>
+          <li>Dati trattati: identificatori del dispositivo (advertising id), informazioni di rete generiche, eventi di interazione con gli annunci.</li>
+          <li>Personalizzazione: regolata dalla finestra di consenso UMP (User Messaging Platform). Se rifiuti il consenso, vengono richiesti soltanto annunci contestuali (non personalizzati) dove la legge lo consente; altrimenti non viene richiesto alcun annuncio.</li>
+          <li>Informativa: <a href="https://policies.google.com/technologies/ads" rel="noopener noreferrer" target="_blank">policies.google.com/technologies/ads</a></li>
+        </ul>
+
+        <h3>3.2 Firebase Crashlytics (segnalazione crash)</h3>
+        <ul>
+          <li>Finalità: rilevare e diagnosticare i crash dell'applicazione.</li>
+          <li>Dati trattati: stack trace dei crash, modello di dispositivo, versione del sistema operativo, versione dell'app, un identificativo di installazione anonimo.</li>
+          <li>L'app non allega informazioni personali ai report di crash.</li>
+          <li>Informativa: <a href="https://firebase.google.com/support/privacy" rel="noopener noreferrer" target="_blank">firebase.google.com/support/privacy</a></li>
+        </ul>
+
+        <h3>3.3 Firebase Analytics (uso aggregato)</h3>
+        <ul>
+          <li>Finalità: misurare l'utilizzo aggregato (es. quante partite vengono giocate, quale schermata è più visitata) per orientare le scelte di prodotto.</li>
+          <li>Dati trattati: eventi anonimi senza contenuti personali, modello di dispositivo, versione del sistema operativo, versione dell'app, paese (granularità grossolana).</li>
+          <li>Informativa: <a href="https://firebase.google.com/support/privacy" rel="noopener noreferrer" target="_blank">firebase.google.com/support/privacy</a></li>
+        </ul>
+
+        <h2>4. Minori</h2>
+        <p>WitsAgora ha un rating 13+. L'app non raccoglie consapevolmente dati da utenti di età inferiore. Se ritieni che un minore abbia utilizzato l'app e sei il suo genitore o tutore, puoi scrivere all'indirizzo di contatto in §8 per chiedere un intervento.</p>
+
+        <h2>5. Le tue scelte</h2>
+        <ul>
+          <li><strong>Consenso:</strong> nelle giurisdizioni in cui si applica, la finestra di consenso compare al primo avvio e può essere riaperta in qualsiasi momento da <strong>Impostazioni &rarr; Scelte sulla privacy</strong>.</li>
+          <li><strong>Crash reporting / Analytics:</strong> possono essere disattivati a livello di sistema operativo disattivando la pubblicità personalizzata nelle impostazioni del dispositivo; una versione futura dell'app potrebbe esporre anche un interruttore interno.</li>
+          <li><strong>Dati locali:</strong> puoi rimuoverli disinstallando l'app o pulendo i dati dell'app dalle impostazioni di sistema del dispositivo.</li>
+        </ul>
+
+        <h2>6. Conservazione dei dati</h2>
+        <p>I dati salvati sul dispositivo restano fino a quando non li rimuovi (cancellando i dati dell'app o disinstallandola). Le SDK di terze parti applicano le proprie politiche di conservazione, indicate ai link sopra.</p>
+
+        <h2>7. Modifiche a questa informativa</h2>
+        <p>Se aggiorniamo questa informativa modificheremo la data di "Ultimo aggiornamento" in cima. Le modifiche sostanziali verranno comunicate tramite un avviso all'interno dell'app.</p>
+
+        <h2>8. Contatti</h2>
+        <p>Per domande o richieste relative alla privacy, contatta lo Sviluppatore all'indirizzo email indicato nella scheda dell'app sullo store.</p>
+      </section>
+
+      <!-- ENGLISH -->
+      <section class="lang" data-lang="en" lang="en">
+        <p>This policy explains what information the WitsAgora mobile app collects, how it is used, and the choices available to you. WitsAgora is published by the developer trading as <strong>zipangulu</strong> (the "Developer", "we", "us").</p>
+
+        <h2>1. Summary</h2>
+        <ul>
+          <li>WitsAgora is an offline party game. <strong>It does not require an account, sign-in, or any personal information from you.</strong></li>
+          <li>All match data — players, scores, history — is stored <strong>only on your device</strong>.</li>
+          <li>The app uses <strong>Google AdMob</strong> to display interstitial advertisements between matches and <strong>Firebase Crashlytics / Analytics</strong> to detect crashes and measure aggregate usage.</li>
+          <li>In jurisdictions where it is required (EEA, UK, Switzerland), a consent dialog is shown on first launch to let you accept or refuse personalized advertising. You can change this choice at any time from <strong>Settings &rarr; Privacy choices</strong>.</li>
+        </ul>
+
+        <h2>2. Information processed by the app itself</h2>
+        <p>The app processes the following information <strong>locally on your device only</strong>:</p>
+        <ul>
+          <li>Names you type for the players in a match (free-form, never validated against a real identity).</li>
+          <li>Avatars chosen for those players.</li>
+          <li>Match configuration (rounds, turn duration, voting mode).</li>
+          <li>Match history (rounds played, votes cast, final scores) — stored in a local SQLite database.</li>
+        </ul>
+        <p>This data is <strong>never</strong> transmitted to the Developer or to any third party. Uninstalling the app removes it.</p>
+
+        <h2>3. Information processed by third-party SDKs</h2>
+        <p>WitsAgora embeds the following third-party SDKs. Each one operates under its own privacy policy.</p>
+
+        <h3>3.1 Google AdMob (advertising)</h3>
+        <ul>
+          <li>Purpose: serve interstitial advertisements between matches.</li>
+          <li>Data processed: device identifiers (advertising id), coarse network information, ad interaction events.</li>
+          <li>Personalization: governed by the User Messaging Platform (UMP) consent dialog. If you refuse consent, only contextual (non-personalized) ads are requested where the law allows; otherwise, no ads are requested at all.</li>
+          <li>Privacy policy: <a href="https://policies.google.com/technologies/ads" rel="noopener noreferrer" target="_blank">policies.google.com/technologies/ads</a></li>
+        </ul>
+
+        <h3>3.2 Firebase Crashlytics (crash reporting)</h3>
+        <ul>
+          <li>Purpose: detect and diagnose application crashes.</li>
+          <li>Data processed: crash stack traces, device model, OS version, app version, an anonymous installation id.</li>
+          <li>The app does not attach any personal information to crash reports.</li>
+          <li>Privacy policy: <a href="https://firebase.google.com/support/privacy" rel="noopener noreferrer" target="_blank">firebase.google.com/support/privacy</a></li>
+        </ul>
+
+        <h3>3.3 Firebase Analytics (aggregate usage)</h3>
+        <ul>
+          <li>Purpose: measure aggregate usage (e.g. how many matches are played, which screen is most visited) to inform product decisions.</li>
+          <li>Data processed: anonymous events with no personal payload, device model, OS version, app version, country (coarse).</li>
+          <li>Privacy policy: <a href="https://firebase.google.com/support/privacy" rel="noopener noreferrer" target="_blank">firebase.google.com/support/privacy</a></li>
+        </ul>
+
+        <h2>4. Children</h2>
+        <p>WitsAgora is rated 13+. The app does not knowingly collect data from users under that age. If you believe a child has used the app and you are their legal guardian, you may write to the contact address in §8 to request action.</p>
+
+        <h2>5. Your choices</h2>
+        <ul>
+          <li><strong>Consent:</strong> in jurisdictions where it applies, the consent dialog is shown on first launch and can be reopened from <strong>Settings &rarr; Privacy choices</strong> at any time.</li>
+          <li><strong>Crash reporting / Analytics:</strong> these can be disabled at the OS level by opting out of personalized advertising in your device settings; a future app release may also expose an in-app toggle.</li>
+          <li><strong>Local data:</strong> clear it by uninstalling the app or by clearing the app's data via your device's system settings.</li>
+        </ul>
+
+        <h2>6. Data retention</h2>
+        <p>Data stored on your device persists until you delete it (by clearing app data or uninstalling). The third-party SDKs apply their own retention policies, linked above.</p>
+
+        <h2>7. Changes to this policy</h2>
+        <p>If we update this policy we will revise the "Last updated" date at the top. Material changes will be surfaced via an in-app notice.</p>
+
+        <h2>8. Contact</h2>
+        <p>For privacy questions or requests, contact the Developer at the email address listed on the store page for WitsAgora.</p>
+      </section>
+    </article>
+
+    <footer class="site">
+      <span id="footer-it">&copy; 2026 zipangulu &middot; WitsAgora</span>
+      <span id="footer-en" hidden>&copy; 2026 zipangulu &middot; WitsAgora</span>
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      var buttons = document.querySelectorAll('.lang-switch button');
+      var sections = document.querySelectorAll('article .lang');
+      var titles = { it: document.getElementById('title-it'), en: document.getElementById('title-en') };
+      var updated = { it: document.getElementById('updated-it'), en: document.getElementById('updated-en') };
+
+      function setLang(lang) {
+        document.documentElement.lang = lang;
+        buttons.forEach(function (b) {
+          b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
+        });
+        sections.forEach(function (s) {
+          s.classList.toggle('active', s.dataset.lang === lang);
+        });
+        Object.keys(titles).forEach(function (key) {
+          if (titles[key]) titles[key].hidden = key !== lang;
+          if (updated[key]) updated[key].hidden = key !== lang;
+        });
+        try { localStorage.setItem('witsagora.privacy.lang', lang); } catch (e) {}
+      }
+
+      buttons.forEach(function (b) {
+        b.addEventListener('click', function () { setLang(b.dataset.lang); });
+      });
+
+      var saved = null;
+      try { saved = localStorage.getItem('witsagora.privacy.lang'); } catch (e) {}
+      var initial = saved
+        || (navigator.language && navigator.language.toLowerCase().startsWith('it') ? 'it' : 'en');
+      if (initial !== 'it' && initial !== 'en') initial = 'it';
+      setLang(initial);
+    })();
+  </script>
+</body>
+</html>
