@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WitsAgora — Data Deletion Request</title>
+  <meta name="description" content="How to request deletion of your data from the WitsAgora mobile app.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="./data-deletion.html">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #1a1a1a;
+      --muted: #5a5a5a;
+      --accent: #3b5bdb;
+      --border: #e5e5e5;
+      --code-bg: #f4f4f6;
+      --callout-bg: #f4f6ff;
+      --callout-border: #3b5bdb;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #14151a;
+        --fg: #ececec;
+        --muted: #a0a0a8;
+        --accent: #8aa6ff;
+        --border: #2a2c33;
+        --code-bg: #1d1e23;
+        --callout-bg: #1b1f2e;
+        --callout-border: #8aa6ff;
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 24px 96px;
+    }
+    header.site {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }
+    header.site .brand {
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    header.site h1 {
+      margin: 0;
+      font-size: 32px;
+      line-height: 1.2;
+      font-weight: 700;
+    }
+    header.site .updated {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 4px;
+    }
+    article h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 40px 0 12px;
+      line-height: 1.3;
+    }
+    article h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin: 24px 0 8px;
+    }
+    article p { margin: 0 0 14px; }
+    article ul, article ol {
+      padding-left: 22px;
+      margin: 0 0 16px;
+    }
+    article li { margin: 6px 0; }
+    article a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    article a:hover { text-decoration: none; }
+    article code {
+      background: var(--code-bg);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 0.92em;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    .callout {
+      background: var(--callout-bg);
+      border-left: 4px solid var(--callout-border);
+      padding: 16px 18px;
+      border-radius: 6px;
+      margin: 20px 0 24px;
+    }
+    .callout p { margin: 0; }
+    .callout p + p { margin-top: 10px; }
+    table.data {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+      font-size: 15px;
+    }
+    table.data th,
+    table.data td {
+      text-align: left;
+      vertical-align: top;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    table.data th {
+      font-weight: 700;
+      background: var(--code-bg);
+    }
+    table.data td code {
+      font-size: 13px;
+    }
+    .email-cta {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff !important;
+      text-decoration: none !important;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      margin: 8px 0 16px;
+    }
+    footer.site {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    footer.site a { color: var(--muted); }
+    @media (max-width: 540px) {
+      body { font-size: 16px; }
+      main { padding: 28px 18px 64px; }
+      header.site h1 { font-size: 26px; }
+      article h2 { font-size: 18px; }
+      table.data { font-size: 14px; }
+      table.data th, table.data td { padding: 8px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="site">
+      <span class="brand">WitsAgora</span>
+      <h1>Data Deletion Request</h1>
+      <div class="updated">Last updated: 14 May 2026</div>
+    </header>
+
+    <article>
+      <p>WitsAgora is an offline party game published by <strong>Claudio Pellegrino</strong>. It does not require an account, sign-in, or any personal information. This page explains, for each category of data the app handles, how it can be deleted &mdash; either by you directly, or by us on request.</p>
+
+      <div class="callout">
+        <p><strong>Quick path:</strong> if you just want everything gone, uninstall WitsAgora from your device and email <a href="mailto:support@witsagora.com?subject=Data%20Deletion%20Request">support@witsagora.com</a> with the subject "Data Deletion Request". We will remove the data linked to your installation from our analytics and crash reporting systems within 30 days.</p>
+      </div>
+
+      <h2>1. What data exists, and where</h2>
+      <table class="data">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Where it lives</th>
+            <th>How to delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Player names, avatars, match configuration, match history</td>
+            <td>Locally on your device (SQLite database + preferences)</td>
+            <td>You can delete this yourself (see §2)</td>
+          </tr>
+          <tr>
+            <td>Advertising ID, ad interaction events</td>
+            <td>Google AdMob</td>
+            <td>You can reset/delete this yourself in your device settings (see §3)</td>
+          </tr>
+          <tr>
+            <td>Firebase Installation ID, anonymous analytics events</td>
+            <td>Firebase Analytics</td>
+            <td>Email us to delete (see §4)</td>
+          </tr>
+          <tr>
+            <td>Crash reports, device model, OS version, app version, anonymous installation id</td>
+            <td>Firebase Crashlytics</td>
+            <td>Email us to delete (see §4)</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>WitsAgora does <strong>not</strong> collect your name, email address, phone number, contacts, photos, precise location, or any other personally identifying information. There is no user account to delete because no account is ever created.</p>
+
+      <h2>2. Data you can delete yourself: local data</h2>
+      <p>All match data stays on your device. You can remove it at any time by either of the following:</p>
+      <ul>
+        <li><strong>Uninstall WitsAgora.</strong> All local data is removed automatically.</li>
+        <li><strong>Clear app data without uninstalling.</strong> On Android: <em>System Settings &rarr; Apps &rarr; WitsAgora &rarr; Storage &rarr; Clear data</em>. On iOS: uninstall and reinstall (iOS does not expose a "clear data" action).</li>
+      </ul>
+      <p>This data is never copied off your device, so once you remove it locally, nothing remains anywhere.</p>
+
+      <h2>3. Data you can delete yourself: advertising identifier</h2>
+      <p>WitsAgora uses Google AdMob to show interstitial ads between matches. AdMob references your device's advertising identifier (set and controlled by your operating system, not by WitsAgora).</p>
+      <p>You can reset or delete the advertising identifier directly from your device:</p>
+      <ul>
+        <li><strong>Android:</strong> <em>Settings &rarr; Privacy &rarr; Ads</em>, then choose "Delete advertising ID" or "Reset advertising ID".</li>
+        <li><strong>iOS:</strong> <em>Settings &rarr; Privacy &amp; Security &rarr; Tracking</em>, then disable "Allow Apps to Request to Track" (this effectively zeroes the IDFA).</li>
+      </ul>
+      <p>You can also withdraw consent to personalized advertising at any time from within the app: <em>Settings &rarr; Privacy choices</em>. After withdrawing consent, only non-personalized (contextual) ads are requested where the law allows.</p>
+
+      <h2>4. Data we delete on request: analytics &amp; crash reports</h2>
+      <p>Data collected by Firebase Analytics and Firebase Crashlytics is keyed to a Firebase Installation ID generated on first launch. This ID is not linked to your real identity, but if you want it (and the data associated with it) removed from our analytics systems, write to us.</p>
+
+      <p>
+        <a class="email-cta" href="mailto:support@witsagora.com?subject=Data%20Deletion%20Request&amp;body=I%20would%20like%20to%20request%20deletion%20of%20data%20associated%20with%20my%20installation%20of%20WitsAgora.%0A%0AApproximate%20date%20of%20last%20use%3A%20%0ACountry%3A%20%0APlatform%20(Android%2FiOS)%3A%20%0A%0AFirebase%20Installation%20ID%20(optional%2C%20see%20https%3A%2F%2Fwitsagora.com%2Fdata-deletion%20%C2%A75)%3A%20%0A">Send deletion request</a>
+      </p>
+
+      <p>To help us locate the right records, include in the email:</p>
+      <ul>
+        <li>Subject: <code>Data Deletion Request</code></li>
+        <li>Approximate date of your last use of WitsAgora</li>
+        <li>Country</li>
+        <li>Platform (Android or iOS)</li>
+        <li><em>(Optional but helpful)</em> Firebase Installation ID &mdash; see §5 for how to find it</li>
+      </ul>
+
+      <p>What happens next:</p>
+      <ol>
+        <li>We acknowledge your request within 7 days.</li>
+        <li>We complete the deletion within 30 days (GDPR Article 12 timing).</li>
+        <li>We send confirmation when the deletion has been processed.</li>
+      </ol>
+
+      <h3>What gets deleted</h3>
+      <ul>
+        <li>Analytics events associated with your Firebase Installation ID.</li>
+        <li>Crash reports associated with your Crashlytics Installation ID.</li>
+        <li>Any audience/segment associations on the analytics side.</li>
+      </ul>
+
+      <h3>What does <em>not</em> get deleted</h3>
+      <ul>
+        <li><strong>Fully aggregated metrics</strong> (e.g. "number of matches played per day across all users"). Once data is aggregated to the point where it can no longer be linked to any individual installation, GDPR no longer treats it as personal data, and we keep it for product analytics.</li>
+        <li><strong>AdMob data.</strong> Ad interaction data lives in Google's AdMob systems and follows Google's own retention policy. The fastest way to break the link between you and AdMob data is to reset your advertising identifier as described in §3. For direct requests to Google, see <a href="https://support.google.com/admob/answer/10861386" rel="noopener noreferrer" target="_blank">Google AdMob &mdash; Data subject requests</a>.</li>
+      </ul>
+
+      <h2>5. Finding your Firebase Installation ID (optional)</h2>
+      <p>The Firebase Installation ID is an anonymous string generated by the SDK on first launch. WitsAgora does not currently display this ID inside the app, so if you want to provide it with your request you will need to extract it via the Android logs (developer access required):</p>
+      <ul>
+        <li>Enable USB debugging on your device and connect it to a computer.</li>
+        <li>Run <code>adb logcat | grep -i "FirebaseInstallations"</code> while launching WitsAgora.</li>
+        <li>Look for a line containing a token similar to <code>c_xxxxxxxxxxxxxxxxxxxxx</code>.</li>
+      </ul>
+      <p>If this is too involved, just skip it. We can still proceed with deletion using the approximate date and country you provide; in that case the deletion is performed for all records matching those parameters from your installation timeframe.</p>
+
+      <h2>6. Children's data</h2>
+      <p>WitsAgora is rated 13+ and does not knowingly collect data from users under that age. If you are the parent or legal guardian of a child who has used WitsAgora and you want their data removed, email <a href="mailto:support@witsagora.com?subject=Data%20Deletion%20Request%20-%20Minor">support@witsagora.com</a> with the subject "Data Deletion Request - Minor". We will prioritize and process these requests.</p>
+
+      <h2>7. If we cannot fulfill your request</h2>
+      <p>If we are unable to fulfill all or part of your request &mdash; for example because the data has already been deleted under standard retention policies, or because it cannot be linked to your installation &mdash; we will tell you so explicitly and explain why, within the same 30-day window.</p>
+
+      <h2>8. Contact</h2>
+      <p>For data deletion requests, or any other privacy-related question, write to <a href="mailto:support@witsagora.com">support@witsagora.com</a>.</p>
+      <p>For the full description of what WitsAgora collects and why, see the <a href="./privacy.html">Privacy Policy</a>.</p>
+    </article>
+
+    <footer class="site">
+      &copy; 2026 WitsAgora &middot; <a href="./privacy.html">Privacy Policy</a>
+    </footer>
+  </main>
+</body>
+</html>
