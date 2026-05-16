@@ -70,13 +70,30 @@
 }
 </script>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8M0W5R3TPN"></script>
-  <script>
+<!-- Google tag (gtag.js) — Consent Mode v2, default denied (cookieless pings only) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8M0W5R3TPN"></script>
+<script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
+  // Deny every storage type by default. No banner is shown; this stays denied for
+  // every visitor. GA4 still sends anonymous, cookieless pings under Consent Mode v2.
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'denied',
+    personalization_storage: 'denied',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+
+  // Extra privacy hardening for cookieless mode.
+  gtag('set', 'ads_data_redaction', true);
+  gtag('set', 'url_passthrough', true);
+
+  gtag('js', new Date());
   gtag('config', 'G-8M0W5R3TPN');
 </script>
 
