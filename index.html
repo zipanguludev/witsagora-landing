@@ -1,38 +1,768 @@
 <!doctype html>
-<html lang="it">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>WitsAgora</title>
-  <meta name="robots" content="noindex">
-  <style>
-    html, body { margin: 0; padding: 0; height: 100%; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #fff;
-      color: #1a1a1a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 24px;
-    }
-    main { max-width: 480px; }
-    h1 { font-size: 28px; margin: 0 0 12px; font-weight: 700; }
-    p { color: #5a5a5a; line-height: 1.55; margin: 0 0 8px; }
-    a { color: #3b5bdb; }
-    @media (prefers-color-scheme: dark) {
-      body { background: #14151a; color: #ececec; }
-      p { color: #a0a0a8; }
-      a { color: #8aa6ff; }
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>WitsAgora — The Debate Party Game</title>
+<meta name="description" content="Pass-and-play debate party game for Android and iOS. Two debaters, one motion, the audience decides. 3 to 10 players, on a single phone." />
+<meta name="theme-color" content="#0A0A14" />
+<link rel="canonical" href="https://witsagora.com/" />
+
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png" />
+<link rel="apple-touch-icon" href="assets/favicon-512.png" />
+
+<!-- Open Graph / social -->
+<meta property="og:title" content="WitsAgora — The Debate Party Game" />
+<meta property="og:description" content="Two debaters. One motion. The audience decides who wins. A pass-and-play party game for 3 to 10 players." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://witsagora.com/" />
+<meta property="og:image" content="https://witsagora.com/assets/cover.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="WitsAgora" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="WitsAgora — The Debate Party Game" />
+<meta name="twitter:description" content="Two debaters. One motion. The audience decides who wins." />
+<meta name="twitter:image" content="https://witsagora.com/assets/cover.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sora:wght@300;400;500;600;700&family=Newsreader:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#0A0A14;
+    --bg-2:#11111F;
+    --bg-3:#161628;
+    --ink:#F7F5EE;
+    --ink-dim:#B7B5C2;
+    --ink-mute:#6E6C7C;
+    --pro:#F97316;
+    --con:#818CF8;
+    --gold:#FBBF24;
+    --line:rgba(247,245,238,0.08);
+    --line-strong:rgba(247,245,238,0.18);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:"Sora",system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+  body{font-size:16px;line-height:1.5;font-weight:400}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  ::selection{background:rgba(249,115,22,0.35);color:var(--ink)}
+  .display{font-family:"Bebas Neue",sans-serif;font-weight:400;letter-spacing:0.005em;line-height:0.9}
+  .mono-eyebrow{font-family:"Sora",sans-serif;font-size:11px;letter-spacing:0.32em;text-transform:uppercase;color:var(--ink-dim);font-weight:500}
+  .editorial{font-family:"Newsreader",serif;font-style:italic;font-weight:400}
+
+  /* ---- nav ---- */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:18px 28px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(14px);background:linear-gradient(to bottom,rgba(10,10,20,0.85),rgba(10,10,20,0.55));border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand img{width:34px;height:34px}
+  .brand .wm{font-family:"Bebas Neue",sans-serif;font-size:22px;letter-spacing:0.12em;line-height:1}
+  .brand .wm .a{color:var(--pro)}
+  .brand .wm .b{color:var(--con)}
+  .navlinks{display:flex;gap:34px;align-items:center;font-size:13px;color:var(--ink-dim)}
+  .navlinks a{transition:color .2s}
+  .navlinks a:hover{color:var(--ink)}
+  .navcta{display:inline-flex;align-items:center;gap:10px;padding:10px 18px;border-radius:999px;background:var(--ink);color:var(--bg);font-size:13px;font-weight:500;letter-spacing:0.01em;transition:transform .18s}
+  .navcta:hover{transform:translateY(-1px)}
+  .navcta .dot{width:6px;height:6px;border-radius:50%;background:var(--pro);box-shadow:0 0 12px var(--pro)}
+  @media (max-width:780px){.navlinks{display:none}}
+
+  /* ============================= HERO ============================= */
+  .hero{position:relative;min-height:100vh;padding:120px 36px 60px;display:flex;align-items:center;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(900px 500px at 6% -10%,rgba(249,115,22,0.18),transparent 60%),
+    radial-gradient(900px 600px at 105% 105%,rgba(129,140,248,0.22),transparent 60%);
+    pointer-events:none}
+  .hero-inner{position:relative;max-width:1400px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.05fr 0.95fr;gap:50px;align-items:center}
+  @media (max-width:980px){.hero-inner{grid-template-columns:1fr;gap:50px}}
+
+  .h-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:30px}
+  .h-eye-mark{display:inline-flex;gap:4px;align-items:center}
+  .h-eye-mark i{display:block;width:16px;height:6px;border-radius:2px}
+  .h-eye-mark i:first-child{background:var(--pro)}
+  .h-eye-mark i:last-child{background:var(--con)}
+  .h-eyebrow .label{font-family:"Sora",sans-serif;font-size:13px;letter-spacing:0.36em;text-transform:uppercase;color:var(--ink);font-weight:500}
+
+  .h-title{font-size:clamp(96px,16vw,228px);margin:0;letter-spacing:-0.005em}
+  .h-title .pro{color:var(--pro);display:block}
+  .h-title .con{color:var(--con);display:block;margin-top:-0.05em}
+
+  .h-divider{display:flex;align-items:center;gap:18px;margin-top:42px}
+  .h-divider .accent{width:36px;height:2px;background:var(--pro)}
+  .h-divider .editor{font-family:"Sora",sans-serif;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:var(--ink-mute)}
+
+  .h-sub{margin:16px 0 0;max-width:560px;font-size:19px;line-height:1.5;color:var(--ink-dim)}
+  .h-sub .strong{display:block;color:var(--ink);font-weight:500;font-size:22px;margin-top:6px}
+
+  .h-ctas{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:12px;padding:16px 22px;border-radius:14px;font-size:14px;font-weight:500;letter-spacing:0.02em;transition:transform .18s, box-shadow .18s, border-color .18s;cursor:pointer;border:1px solid transparent;font-family:inherit}
+  .btn-pro{background:linear-gradient(135deg,var(--pro),#EA580C);color:#1a0a00;box-shadow:0 18px 40px -18px rgba(249,115,22,0.7)}
+  .btn-pro:hover{transform:translateY(-2px);box-shadow:0 22px 48px -18px rgba(249,115,22,0.85)}
+  .btn-ghost{border:1px solid var(--line-strong);color:var(--ink);background:rgba(255,255,255,0.02)}
+  .btn-ghost:hover{border-color:var(--ink)}
+  .btn .arr{transition:transform .2s}
+  .btn:hover .arr{transform:translateX(3px)}
+
+  .h-meta{display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border-radius:999px;border:1px solid var(--line-strong);background:rgba(255,255,255,0.02);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-dim)}
+  .h-meta .dot{width:5px;height:5px;border-radius:50%;background:var(--gold)}
+
+  /* status banner */
+  .h-status{display:inline-flex;align-items:center;gap:10px;margin-bottom:22px;padding:6px 12px 6px 8px;border-radius:999px;border:1px solid rgba(251,191,36,0.4);background:rgba(251,191,36,0.06);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);font-weight:500}
+  .h-status .pulse{position:relative;width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold)}
+  .h-status .pulse::before{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--gold);opacity:0.6;animation:pulse 2s ease-out infinite}
+  @keyframes pulse{0%{transform:scale(.6);opacity:.7}100%{transform:scale(1.6);opacity:0}}
+
+  /* ---- hero stage / phone + pills ---- */
+  .hero-stage{position:relative;min-height:620px;display:flex;align-items:center;justify-content:center}
+  .stage-rings{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+  .stage-rings .r{position:absolute;border:1px dashed rgba(247,245,238,0.07);border-radius:50%}
+  .r1{width:360px;height:360px;animation:spin 60s linear infinite}
+  .r2{width:520px;height:520px;animation:spin 90s linear infinite reverse}
+  .r3{width:700px;height:700px;animation:spin 120s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  .phone{position:relative;width:290px;height:600px;border-radius:46px;background:#000;padding:10px;border:1px solid rgba(247,245,238,0.12);box-shadow:0 60px 120px -40px rgba(0,0,0,0.8),0 0 0 1px rgba(247,245,238,0.04) inset;transform:perspective(1400px) rotateY(-8deg) rotateX(3deg);z-index:2}
+  .phone .screen{width:100%;height:100%;border-radius:38px;overflow:hidden;background:#0A0A14;position:relative}
+  .phone .notch{position:absolute;top:14px;left:50%;transform:translateX(-50%);width:90px;height:24px;background:#000;border-radius:14px;z-index:5}
+  .phone .slides{position:absolute;inset:0}
+  .phone .slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease}
+  .phone .slide.on{opacity:1}
+  .phone .slide img{width:100%;height:100%;object-fit:cover;object-position:top}
+
+  /* floating Pro / Con pills */
+  .h-pill{position:absolute;display:inline-flex;align-items:center;justify-content:center;padding:14px 28px;border-radius:999px;font-family:"Sora",sans-serif;font-weight:600;font-size:18px;letter-spacing:0.04em;border:1px solid;backdrop-filter:blur(8px);background:rgba(10,10,20,0.6);z-index:3}
+  .h-pill.pro{color:var(--pro);border-color:rgba(249,115,22,0.55);box-shadow:0 0 30px -6px rgba(249,115,22,0.45),inset 0 0 0 1px rgba(249,115,22,0.15);top:6%;right:6%;animation:floaty 6s ease-in-out infinite}
+  .h-pill.con{color:var(--con);border-color:rgba(129,140,248,0.55);box-shadow:0 0 30px -6px rgba(129,140,248,0.45),inset 0 0 0 1px rgba(129,140,248,0.15);bottom:8%;left:4%;animation:floaty 7s ease-in-out infinite 1s}
+
+  /* dashed connectors */
+  .h-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+  .h-svg path{stroke:rgba(247,245,238,0.18);stroke-width:1;stroke-dasharray:4 6;fill:none}
+  .h-svg .accent-p{stroke:rgba(249,115,22,0.5)}
+  .h-svg .accent-c{stroke:rgba(129,140,248,0.5)}
+
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+  @media (max-width:980px){
+    .hero-stage{min-height:540px}
+    .h-pill.pro{top:2%;right:2%}
+    .h-pill.con{bottom:4%;left:2%}
+  }
+
+  /* ============================= TICKER ============================= */
+  .ticker{position:relative;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2);overflow:hidden;padding:22px 0}
+  .ticker-track{display:flex;gap:60px;width:max-content;animation:tickslide 50s linear infinite;font-family:"Bebas Neue",sans-serif;font-size:30px;letter-spacing:0.06em;color:var(--ink-dim);white-space:nowrap}
+  .ticker-track span.accent{color:var(--pro)}
+  .ticker-track span.alt{color:var(--con)}
+  .ticker-track .sep{color:var(--gold);font-size:18px;align-self:center}
+  @keyframes tickslide{to{transform:translateX(-50%)}}
+
+  /* ============================= SECTIONS ============================= */
+  section{padding:140px 28px;position:relative}
+  .container{max-width:1280px;margin:0 auto}
+  .section-head{display:flex;flex-direction:column;gap:18px;margin-bottom:72px;max-width:800px}
+  .section-head h2{font-size:clamp(56px,9vw,140px);margin:0;color:var(--ink)}
+
+  /* ---- concept ---- */
+  .concept{background:linear-gradient(180deg,var(--bg),var(--bg-2))}
+  .duel{display:grid;grid-template-columns:1fr 80px 1fr;align-items:stretch;gap:0;margin-top:40px;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--bg-3)}
+  @media (max-width:820px){.duel{grid-template-columns:1fr}.duel .vs{padding:24px 0;border-left:none!important;border-right:none!important;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}}
+  .side{padding:44px;position:relative;overflow:hidden}
+  .side .glow{position:absolute;inset:-20% -20% auto auto;width:60%;aspect-ratio:1;border-radius:50%;filter:blur(60px);opacity:0.35;pointer-events:none}
+  .side.pro{background:linear-gradient(160deg,rgba(249,115,22,0.10),transparent 60%)}
+  .side.pro .glow{background:var(--pro)}
+  .side.con{background:linear-gradient(160deg,rgba(129,140,248,0.10),transparent 60%)}
+  .side.con .glow{background:var(--con)}
+  .side .label{font-family:"Bebas Neue",sans-serif;font-size:64px;letter-spacing:0.06em;line-height:1;margin-bottom:18px}
+  .side.pro .label{color:var(--pro)}
+  .side.con .label{color:var(--con)}
+  .side p{color:var(--ink-dim);font-size:15px;line-height:1.6;margin:0 0 18px;max-width:380px}
+  .side .stance{display:inline-flex;gap:8px;padding:8px 14px;border-radius:999px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;border:1px solid currentColor;font-weight:500}
+  .vs{display:flex;align-items:center;justify-content:center;border-left:1px solid var(--line);border-right:1px solid var(--line);background:rgba(0,0,0,0.2)}
+  .vs .vs-mark{font-family:"Bebas Neue",sans-serif;font-size:42px;color:var(--gold);letter-spacing:0.08em;position:relative}
+  .vs .vs-mark::before,.vs .vs-mark::after{content:"";position:absolute;left:50%;transform:translateX(-50%);width:1px;height:80px;background:linear-gradient(var(--line),transparent)}
+  .vs .vs-mark::before{bottom:120%}
+  .vs .vs-mark::after{top:120%;background:linear-gradient(transparent,var(--line))}
+
+  .motion-card{margin-top:36px;padding:30px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,0.02);display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center}
+  .motion-card .stamp{display:flex;flex-direction:column;align-items:flex-start;gap:8px;color:var(--gold)}
+  .motion-card .stamp .stamp-label{font-family:"Sora",sans-serif;font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:var(--gold);font-weight:600}
+  .motion-card .stamp .stamp-mark{font-family:"Newsreader",serif;font-style:italic;font-weight:400;font-size:64px;line-height:0.6;color:var(--gold);opacity:0.85}
+  .motion-card .quote{font-family:"Newsreader",serif;font-style:italic;font-size:24px;line-height:1.3;color:var(--ink)}
+  .motion-card .meta{font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--ink-mute);text-align:right}
+  @media (max-width:680px){.motion-card{grid-template-columns:1fr;text-align:left}.motion-card .meta{text-align:left}}
+
+  /* ---- how it plays ---- */
+  .how{background:var(--bg)}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:40px}
+  @media (max-width:980px){.steps{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.steps{grid-template-columns:1fr}}
+  .step{padding:34px 26px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,0.025),rgba(255,255,255,0));position:relative;transition:border-color .25s, transform .25s}
+  .step:hover{border-color:var(--line-strong);transform:translateY(-4px)}
+  .step .n{font-family:"Bebas Neue",sans-serif;font-size:64px;color:var(--ink-mute);line-height:1;margin-bottom:34px}
+  .step h3{font-family:"Bebas Neue",sans-serif;font-size:28px;letter-spacing:0.04em;color:var(--ink);margin:0 0 12px}
+  .step p{font-size:14px;color:var(--ink-dim);margin:0;line-height:1.55}
+
+  /* ---- showcase / round split ---- */
+  .showcase{background:linear-gradient(180deg,var(--bg-2),var(--bg))}
+  .show-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  @media (max-width:880px){.show-grid{grid-template-columns:1fr;gap:40px}}
+  .show-copy h3{font-family:"Bebas Neue",sans-serif;font-size:80px;letter-spacing:0.02em;line-height:0.95;margin:0 0 24px}
+  .show-copy h3 .o{color:var(--pro)}
+  .show-copy h3 .i{color:var(--con)}
+  .show-copy p{font-size:16px;color:var(--ink-dim);max-width:480px;line-height:1.65}
+  .checks{margin-top:30px;display:flex;flex-direction:column;gap:14px}
+  .check{display:flex;gap:14px;align-items:flex-start;font-size:14px;color:var(--ink)}
+  .check .b{width:18px;height:18px;border-radius:50%;flex:none;margin-top:2px;display:flex;align-items:center;justify-content:center;font-size:10px}
+  .check.pro .b{background:rgba(249,115,22,0.18);color:var(--pro);border:1px solid var(--pro)}
+  .check.con .b{background:rgba(129,140,248,0.18);color:var(--con);border:1px solid var(--con)}
+
+  .duel-phones{display:flex;justify-content:center;gap:30px;position:relative}
+  .phone-sm{width:240px;height:480px;border-radius:38px;padding:8px;background:#000;border:1px solid rgba(247,245,238,0.12);box-shadow:0 40px 80px -30px rgba(0,0,0,0.7)}
+  .phone-sm .scr{width:100%;height:100%;border-radius:32px;overflow:hidden;background:#0A0A14}
+  .phone-sm img{width:100%;height:100%;object-fit:cover;object-position:top}
+  .phone-sm.left{transform:perspective(1400px) rotateY(10deg) translateY(20px);box-shadow:0 40px 80px -30px rgba(249,115,22,0.25)}
+  .phone-sm.right{transform:perspective(1400px) rotateY(-10deg) translateY(-20px);box-shadow:0 40px 80px -30px rgba(129,140,248,0.25)}
+  @media (max-width:520px){.duel-phones{gap:16px}.phone-sm{width:190px;height:380px}}
+
+  /* ---- features grid ---- */
+  .features{background:var(--bg)}
+  .feat-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+  .feat{padding:36px;border:1px solid var(--line);border-radius:24px;background:var(--bg-3);position:relative;overflow:hidden;min-height:260px;display:flex;flex-direction:column;justify-content:space-between;transition:border-color .25s}
+  .feat:hover{border-color:var(--line-strong)}
+  .feat h4{font-family:"Bebas Neue",sans-serif;font-size:38px;letter-spacing:0.03em;line-height:1;margin:0 0 14px}
+  .feat p{margin:0;color:var(--ink-dim);font-size:14px;line-height:1.55;max-width:480px}
+  .feat .tag{position:absolute;top:24px;right:24px;font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:var(--ink-mute)}
+  .feat.span-7{grid-column:span 7}
+  .feat.span-5{grid-column:span 5}
+  .feat.span-4{grid-column:span 4}
+  .feat.span-8{grid-column:span 8}
+  .feat.span-6{grid-column:span 6}
+  .feat.span-12{grid-column:span 12}
+  @media (max-width:880px){.feat{grid-column:span 12!important}}
+
+  /* timer card */
+  .feat-timer{background:radial-gradient(420px 220px at 18% 0%,rgba(129,140,248,0.12),transparent 60%),var(--bg-3)}
+  .preset-row{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+  .preset{padding:10px 16px;border-radius:10px;font-family:"Bebas Neue",sans-serif;letter-spacing:0.06em;font-size:18px;background:rgba(255,255,255,0.04);border:1px solid var(--line);color:var(--ink-dim)}
+  .preset.on{color:var(--bg);background:var(--gold);border-color:var(--gold)}
+  .preset .u{font-size:11px;letter-spacing:0.16em;margin-left:4px;opacity:0.7;font-family:"Sora",sans-serif}
+
+  /* labels card */
+  .feat-labels .labels{margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .lbl{padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,0.02);display:flex;align-items:center;gap:12px}
+  .lbl .emo{font-size:22px;line-height:1}
+  .lbl .nm{font-family:"Bebas Neue",sans-serif;font-size:18px;letter-spacing:0.06em;flex:1}
+  .lbl .vl{font-family:"Bebas Neue",sans-serif;font-size:22px}
+  .lbl.pos{border-color:rgba(251,191,36,0.35);background:rgba(251,191,36,0.06)}
+  .lbl.pos .vl{color:var(--gold)}
+  .lbl.neg{border-color:rgba(218,86,82,0.35);background:rgba(218,86,82,0.06)}
+  .lbl.neg .vl{color:#E07670}
+
+  /* replies card */
+  .feat-replies .replies-tog{margin-top:24px;display:flex;align-items:center;gap:16px}
+  .tog{width:56px;height:30px;border-radius:999px;position:relative;background:rgba(249,115,22,0.25);border:1px solid rgba(249,115,22,0.5)}
+  .tog::after{content:"";position:absolute;top:3px;right:3px;width:22px;height:22px;background:var(--pro);border-radius:50%}
+  .tog-meta{font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-mute)}
+
+  /* prompts card */
+  .feat-prompts ol{margin:22px 0 0;padding:0;list-style:none;counter-reset:p;display:flex;flex-direction:column;gap:10px}
+  .feat-prompts li{counter-increment:p;display:flex;gap:14px;font-family:"Newsreader",serif;font-style:italic;font-size:17px;line-height:1.4;color:var(--ink);padding:8px 0;border-bottom:1px dashed var(--line)}
+  .feat-prompts li:last-child{border-bottom:none}
+  .feat-prompts li::before{content:"0" counter(p);font-family:"Bebas Neue",sans-serif;font-style:normal;color:var(--gold);font-size:18px;letter-spacing:0.04em;flex:none;min-width:30px}
+
+  /* modes card */
+  .feat-modes ul{margin:24px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+  .feat-modes li{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px dashed var(--line);font-size:14px;gap:16px;flex-wrap:wrap}
+  .feat-modes li:last-child{border-bottom:none}
+  .feat-modes li span{color:var(--ink-mute);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;text-align:right}
+
+  /* ---- topics ---- */
+  .topics{background:linear-gradient(180deg,var(--bg),var(--bg-2))}
+  .topics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+  @media (max-width:880px){.topics-grid{grid-template-columns:1fr}}
+  .topic{padding:30px;border-radius:20px;border:1px solid var(--line);background:var(--bg-3);position:relative;overflow:hidden;display:flex;flex-direction:column;gap:20px;min-height:200px;transition:transform .25s, border-color .25s}
+  .topic:hover{transform:translateY(-3px);border-color:var(--line-strong)}
+  .topic .quote-mark{font-family:"Newsreader",serif;font-style:italic;font-size:96px;line-height:0.5;color:var(--gold);opacity:0.6}
+  .topic .q{font-family:"Newsreader",serif;font-style:italic;font-size:20px;line-height:1.35;color:var(--ink)}
+  .topic .meta{display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-mute);margin-top:auto}
+  .topic .meta .cat{color:var(--ink-dim)}
+
+  /* ---- scoring section ---- */
+  .scoring{padding:120px 28px;background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .scoring-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center}
+  @media (max-width:880px){.scoring-wrap{grid-template-columns:1fr;gap:40px}}
+  .scoring-wrap h3{font-family:"Bebas Neue",sans-serif;font-size:80px;letter-spacing:0.02em;line-height:0.95;margin:0}
+  .scoring-wrap p{color:var(--ink-dim);margin:18px 0 0;max-width:420px;line-height:1.6}
+  .formula{padding:30px;border-radius:20px;border:1px solid var(--line-strong);background:linear-gradient(160deg,rgba(251,191,36,0.06),transparent 60%);position:relative}
+  .formula-title{font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+  .formula-eq{font-family:"Bebas Neue",sans-serif;font-size:clamp(36px,5vw,56px);letter-spacing:0.04em;color:var(--ink);line-height:1.1}
+  .formula-eq em{font-family:"Newsreader",serif;font-style:italic;font-weight:400;color:var(--gold)}
+  .formula-eq .op{color:var(--ink-mute);margin:0 8px}
+  .formula-legend{margin-top:24px;display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--ink-dim)}
+  .formula-legend b{color:var(--ink);font-weight:500}
+
+  /* ---- download CTA ---- */
+  .cta{padding:140px 28px;background:linear-gradient(180deg,var(--bg-2),#000);text-align:center;position:relative;overflow:hidden}
+  .cta-orb{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:conic-gradient(from 0deg,rgba(249,115,22,0.2),rgba(129,140,248,0.2),rgba(251,191,36,0.15),rgba(249,115,22,0.2));filter:blur(80px);opacity:0.5;animation:spin 20s linear infinite;pointer-events:none}
+  .cta-inner{position:relative;max-width:900px;margin:0 auto}
+  .cta h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(72px,12vw,180px);line-height:0.92;margin:0;letter-spacing:0.005em}
+  .cta h2 span{color:var(--pro)}
+  .cta h2 em{font-family:"Newsreader",serif;font-style:italic;font-weight:400;color:var(--gold);letter-spacing:-0.01em}
+  .cta p{color:var(--ink-dim);max-width:560px;margin:32px auto 0;font-size:16px;line-height:1.6}
+  .store-buttons{display:flex;justify-content:center;gap:20px;margin-top:44px;flex-wrap:wrap;align-items:center}
+  .store{display:inline-block;position:relative;transition:transform .2s, filter .2s;line-height:0}
+  .store:hover{transform:translateY(-3px)}
+  .store.disabled{pointer-events:none;opacity:0.6;filter:grayscale(0.4)}
+  .store img{height:56px;width:auto;display:block}
+  .store .pill{position:absolute;top:-10px;right:-10px;padding:4px 10px;border-radius:999px;background:var(--gold);color:#231a00;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;z-index:2;line-height:1.2;white-space:nowrap}
+  .store .pill.soon{background:rgba(129,140,248,0.15);color:var(--con);border:1px solid var(--con)}
+  .cta-fineprint{margin-top:28px;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-mute)}
+
+  /* ---- footer ---- */
+  footer{padding:60px 28px 40px;border-top:1px solid var(--line);background:#000}
+  .ft{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px}
+  @media (max-width:780px){.ft{grid-template-columns:1fr 1fr}}
+  .ft h5{font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--ink-mute);margin:0 0 18px;font-weight:500}
+  .ft ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+  .ft a{color:var(--ink-dim);font-size:13px;transition:color .2s}
+  .ft a:hover{color:var(--ink)}
+  .ft .about{max-width:340px;color:var(--ink-dim);font-size:13px;line-height:1.6;margin:14px 0 0}
+  .ft-bottom{max-width:1280px;margin:60px auto 0;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-mute);gap:20px;flex-wrap:wrap}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .r1,.r2,.r3,.h-pill,.cta-orb,.ticker-track,.pulse{animation:none!important}
+    .phone .slide{transition:none}
+  }
+</style>
 </head>
 <body>
-  <main>
-    <h1>WitsAgora</h1>
-    <p>Sito in costruzione.</p>
-    <p><a href="./privacy.html">Privacy policy</a></p>
-  </main>
+
+<!-- ============== NAV ============== -->
+<nav class="nav">
+  <a class="brand" href="#top" aria-label="WitsAgora home">
+    <img src="assets/brandmark.png" alt="" />
+    <div class="wm"><span class="a">WITS</span><span class="b">AGORA</span></div>
+  </a>
+  <div class="navlinks">
+    <a href="#concept">Concept</a>
+    <a href="#how">How it plays</a>
+    <a href="#features">Features</a>
+    <a href="#scoring">Scoring</a>
+    <a href="#topics">Topics</a>
+  </div>
+  <a class="navcta" href="#download"><span class="dot"></span>Get the app</a>
+</nav>
+
+<!-- ============== HERO ============== -->
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <!-- LEFT -->
+    <div>
+      <div class="h-eyebrow">
+        <span class="h-eye-mark" aria-hidden="true"><i></i><i></i></span>
+        <span class="label">Debate Party Game</span>
+      </div>
+
+      <span class="h-status"><span class="pulse"></span>Open testing on Android · iOS coming soon</span>
+
+      <h1 class="display h-title">
+        <span class="pro">WITS</span>
+        <span class="con">AGORA</span>
+      </h1>
+
+      <div class="h-divider">
+        <span class="accent"></span>
+        <span class="editor">Pass-and-play · 3 to 10 players · 1 phone</span>
+      </div>
+      <p class="h-sub">
+        Two debaters. One motion.
+        <span class="strong">The audience decides who wins.</span>
+      </p>
+
+      <div class="h-ctas">
+        <a href="#download" class="btn btn-pro">Get the app <span class="arr">&rsaquo;</span></a>
+        <a href="#how" class="btn btn-ghost">How it plays</a>
+        <span class="h-meta"><span class="dot"></span>3 to 10 players · 13+</span>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="hero-stage" aria-hidden="true">
+      <div class="stage-rings">
+        <span class="r r1"></span><span class="r r2"></span><span class="r r3"></span>
+      </div>
+
+      <svg class="h-svg" viewBox="0 0 600 620" preserveAspectRatio="none" aria-hidden="true">
+        <path class="accent-p" d="M 540 80 L 360 280" />
+        <path class="accent-c" d="M 60 540 L 240 360" />
+        <path d="M 540 80 L 60 540" />
+      </svg>
+
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="screen">
+          <div class="slides" id="phone-slides">
+            <div class="slide on"><img src="assets/home_dark.png" alt="WitsAgora home screen" /></div>
+            <div class="slide"><img src="assets/start_round_dark.png" alt="Round start screen" /></div>
+            <div class="slide"><img src="assets/round_pro.png" alt="Pro turn screen" /></div>
+            <div class="slide"><img src="assets/round_contro.png" alt="Con turn screen" /></div>
+            <div class="slide"><img src="assets/classifica_dark.png" alt="Standings screen" /></div>
+          </div>
+        </div>
+      </div>
+
+      <span class="h-pill pro">Pro</span>
+      <span class="h-pill con">Con</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============== TICKER ============== -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>PASS &amp; PLAY</span><span class="sep">&loz;</span>
+    <span class="accent">PRO</span><span class="sep">&loz;</span>
+    <span>ONE MOTION</span><span class="sep">&loz;</span>
+    <span class="alt">CON</span><span class="sep">&loz;</span>
+    <span>THE AUDIENCE DECIDES</span><span class="sep">&loz;</span>
+    <span>3 TO 10 PLAYERS</span><span class="sep">&loz;</span>
+    <span class="accent">OPEN</span><span class="sep">&loz;</span>
+    <span class="alt">REBUT</span><span class="sep">&loz;</span>
+    <span>WIN AT THE MARGIN</span><span class="sep">&loz;</span>
+    <!-- duplicate for seamless loop -->
+    <span>PASS &amp; PLAY</span><span class="sep">&loz;</span>
+    <span class="accent">PRO</span><span class="sep">&loz;</span>
+    <span>ONE MOTION</span><span class="sep">&loz;</span>
+    <span class="alt">CON</span><span class="sep">&loz;</span>
+    <span>THE AUDIENCE DECIDES</span><span class="sep">&loz;</span>
+    <span>3 TO 10 PLAYERS</span><span class="sep">&loz;</span>
+    <span class="accent">OPEN</span><span class="sep">&loz;</span>
+    <span class="alt">REBUT</span><span class="sep">&loz;</span>
+    <span>WIN AT THE MARGIN</span><span class="sep">&loz;</span>
+  </div>
+</div>
+
+<!-- ============== CONCEPT ============== -->
+<section class="concept" id="concept">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="mono-eyebrow">01 · The concept</span>
+      <h2 class="display">TWO SIDES.<br>ONE MOTION.<br><em class="editorial" style="color:var(--gold);font-size:0.85em">the audience decides.</em></h2>
+    </div>
+
+    <div class="duel reveal">
+      <div class="side pro">
+        <div class="glow"></div>
+        <div class="stance" style="color:var(--pro)">Position · A</div>
+        <div class="label display">PRO</div>
+        <p>Defend the motion. Open with conviction, rebut if you dare. Win by margin: the bigger the gap, the bigger the points.</p>
+        <p style="font-family:'Newsreader',serif;font-style:italic;color:var(--ink)">"It can be done. Here's why it must."</p>
+      </div>
+      <div class="vs"><div class="vs-mark">VS</div></div>
+      <div class="side con">
+        <div class="glow"></div>
+        <div class="stance" style="color:var(--con)">Position · B</div>
+        <div class="label display">CON</div>
+        <p>Tear it down. Name the assumption, disarm the obvious objection, find the angle nobody saw. Wit cuts deeper than volume.</p>
+        <p style="font-family:'Newsreader',serif;font-style:italic;color:var(--ink)">"Look closer. The whole thing collapses."</p>
+      </div>
+    </div>
+
+    <div class="motion-card reveal">
+      <div class="stamp">
+        <span class="stamp-label">The motion</span>
+        <span class="stamp-mark">&ldquo;</span>
+      </div>
+      <div class="quote">Video games are art.</div>
+      <div class="meta">Drawn at random · Round 1</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== HOW IT PLAYS ============== -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="mono-eyebrow">02 · How it plays</span>
+      <h2 class="display">FOUR STEPS.<br>ONE WINNER.</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="n">01</div>
+        <h3>SET THE TABLE</h3>
+        <p>3 to 10 players, one phone. Pick turn length, rounds per player, voting mode. Toggle replies and the qualitative verdict if you want them.</p>
+      </div>
+      <div class="step reveal">
+        <div class="n">02</div>
+        <h3>DRAW A MOTION</h3>
+        <p>The app pulls a topic at random and assigns Pro and Con, favoring whoever has spoken least. No choice, no escape.</p>
+      </div>
+      <div class="step reveal">
+        <div class="n">03</div>
+        <h3>SPEAK YOUR ROUND</h3>
+        <p>Opening Pro, then opening Con, under the timer. With replies on, each speaker can grab a second turn. Or drop the mic.</p>
+      </div>
+      <div class="step reveal">
+        <div class="n">04</div>
+        <h3>THE JURY VOTES</h3>
+        <p>Everyone but the speakers picks a side. Optional labels reward insight, punish derailing. Score is published. Next motion loads.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SHOWCASE: round split ============== -->
+<section class="showcase">
+  <div class="container show-grid">
+    <div class="show-copy reveal">
+      <span class="mono-eyebrow">03 · The duel</span>
+      <h3 class="display" style="margin-top:18px">SAME MOTION.<br><span class="o">ONE ATTACKS.</span><br><span class="i">ONE DEFENDS.</span></h3>
+      <p>Each side gets the same clock and the same screen. The mission is different. Warm orange tension on Pro, cool indigo precision on Con. No ambiguity, no alibi.</p>
+      <div class="checks">
+        <div class="check pro"><span class="b">&bull;</span>Turn timer at 15, 30, 45 or 60 seconds. Custom up to 3 minutes.</div>
+        <div class="check con"><span class="b">&bull;</span>Four loose prompts to spark the argument. Never a checklist.</div>
+        <div class="check pro"><span class="b">&bull;</span>Replies are optional. Mic drops earn a bonus. Wasting your second turn costs you.</div>
+      </div>
+    </div>
+    <div class="duel-phones reveal">
+      <div class="phone-sm left">
+        <div class="scr"><img src="assets/round_pro.png" alt="Pro turn screen"/></div>
+      </div>
+      <div class="phone-sm right">
+        <div class="scr"><img src="assets/round_contro.png" alt="Con turn screen"/></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FEATURES GRID ============== -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="mono-eyebrow">04 · What&rsquo;s inside</span>
+      <h2 class="display">BUILT FOR<br>THE TABLE.</h2>
+    </div>
+    <div class="feat-grid">
+
+      <div class="feat feat-timer span-7 reveal">
+        <div>
+          <span class="tag">Turn timer</span>
+          <h4>FIFTEEN. THIRTY. SIXTY. YOURS.</h4>
+          <p>Generous enough to land an argument, tight enough to keep the table awake. Pick a preset, or set anything from 15 to 180 seconds.</p>
+        </div>
+        <div class="preset-row">
+          <span class="preset">15<span class="u">s</span></span>
+          <span class="preset">30<span class="u">s</span></span>
+          <span class="preset">45<span class="u">s</span></span>
+          <span class="preset on">60<span class="u">s</span></span>
+          <span class="preset">Custom</span>
+        </div>
+      </div>
+
+      <div class="feat feat-replies span-5 reveal">
+        <span class="tag">Replies, optional</span>
+        <h4>TWO TURNS, OR FOUR.</h4>
+        <p>With replies on, each speaker can take a second turn to answer. The choice is public: the jury sees who passed. Drop the mic and you get a bonus. Reply and lose? You pay for the second turn.</p>
+        <div class="replies-tog">
+          <span class="tog" aria-hidden="true"></span>
+          <span class="tog-meta">Replies · ON by default</span>
+        </div>
+      </div>
+
+      <div class="feat feat-labels span-7 reveal">
+        <span class="tag">Qualitative verdict</span>
+        <h4>FOUR LABELS. ONE CONSENSUS.</h4>
+        <p>After the vote, the jury can stamp the round. A label only sticks when a strict majority of jurors agree. From 4 players up. Auto-off at three.</p>
+        <div class="labels">
+          <div class="lbl pos"><span class="emo">&#128161;</span><span class="nm">Insight</span><span class="vl">+1</span></div>
+          <div class="lbl pos"><span class="emo">&#127919;</span><span class="nm">Knockout</span><span class="vl">+2</span></div>
+          <div class="lbl neg"><span class="emo">&#127744;</span><span class="nm">Derail</span><span class="vl">&minus;1</span></div>
+          <div class="lbl neg"><span class="emo">&#129296;</span><span class="nm">Below the belt</span><span class="vl">&minus;2</span></div>
+        </div>
+      </div>
+
+      <div class="feat feat-prompts span-5 reveal">
+        <span class="tag">Speaker prompts</span>
+        <h4>FOUR QUESTIONS,<br>NO CHECKLIST.</h4>
+        <ol>
+          <li>What&rsquo;s really at stake if you&rsquo;re right?</li>
+          <li>Got an example even your grandma would get?</li>
+          <li>Who&rsquo;d disagree most? What would they say?</li>
+          <li>Which objection comes first? Disarm it before it lands.</li>
+        </ol>
+      </div>
+
+      <div class="feat feat-modes span-12 reveal">
+        <span class="tag">Configure the match</span>
+        <h4>ONE SCREEN, EVERY KNOB.</h4>
+        <p>Set the table to taste before you draw a single motion.</p>
+        <ul>
+          <li>Players <span>3 to 10</span></li>
+          <li>Turn duration <span>15s · 30s · 45s · 60s · custom 15 to 180s</span></li>
+          <li>Rounds per player <span>1 to 5 · default 2</span></li>
+          <li>Voting mode <span>Simultaneous · Sequential (pass the phone)</span></li>
+          <li>Replies <span>ON / OFF · default ON</span></li>
+          <li>Qualitative verdict <span>ON / OFF · auto-off at 3 players</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SCORING ============== -->
+<section class="scoring" id="scoring">
+  <div class="scoring-wrap">
+    <div class="reveal">
+      <span class="mono-eyebrow">05 · Scoring</span>
+      <h3 style="margin-top:16px">WIN AT<br>THE MARGIN.</h3>
+      <p>No buckets. No flat points. A single, continuous formula rewards persuading the table, not just sneaking past it. Margin matters: bigger gap, bigger score.</p>
+    </div>
+    <div class="reveal">
+      <div class="formula">
+        <div class="formula-title">Round score · winning speaker</div>
+        <div class="formula-eq">+1 <span class="op">+</span> <em>margin</em></div>
+        <div class="formula-legend">
+          <span><b>Margin</b> = winner votes &minus; loser votes.</span>
+          <span>Each juror who voted for the winner: <b style="color:var(--gold)">+1</b>.</span>
+          <span>A clean mic drop after winning: <b style="color:var(--gold)">+1</b> bonus.</span>
+          <span>Replying and losing anyway: <b style="color:#E07670">&minus;1</b>.</span>
+          <span>Tie? <b>0</b> for everyone. The next motion is already loading.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== TOPICS ============== -->
+<section class="topics" id="topics">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="mono-eyebrow">06 · The deck</span>
+      <h2 class="display">MOTIONS<br>WORTH FIGHTING.</h2>
+      <p style="color:var(--ink-dim);max-width:520px;margin-top:8px">Dozens of motions across light, sharp, and absurd. From the bar to the dinner table to the long drive home.</p>
+    </div>
+    <div class="topics-grid">
+      <div class="topic reveal">
+        <div class="quote-mark">&ldquo;</div>
+        <div class="q">"TV series should be capped at three seasons."</div>
+        <div class="meta"><span class="cat">Culture · Sharp</span></div>
+      </div>
+      <div class="topic reveal">
+        <div class="quote-mark">&ldquo;</div>
+        <div class="q">"Social networks should be banned for anyone under sixteen."</div>
+        <div class="meta"><span class="cat">Society · Sharp</span></div>
+      </div>
+      <div class="topic reveal">
+        <div class="quote-mark">&ldquo;</div>
+        <div class="q">"Cold pizza for breakfast is a fundamental human right."</div>
+        <div class="meta"><span class="cat">Food · Absurd</span></div>
+      </div>
+      <div class="topic reveal">
+        <div class="quote-mark">&ldquo;</div>
+        <div class="q">"The four-day workweek is already overdue."</div>
+        <div class="meta"><span class="cat">Work · Bold</span></div>
+      </div>
+      <div class="topic reveal">
+        <div class="quote-mark">&ldquo;</div>
+        <div class="q">"Knowing your blood type is more useful than knowing your zodiac sign."</div>
+        <div class="meta"><span class="cat">Life · Witty</span></div>
+      </div>
+      <div class="topic reveal">
+        <div class="quote-mark">&ldquo;</div>
+        <div class="q">"Marathons are more of a trend than a sport."</div>
+        <div class="meta"><span class="cat">Sport · Sharp</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== DOWNLOAD CTA ============== -->
+<section class="cta" id="download">
+  <div class="cta-orb" aria-hidden="true"></div>
+  <div class="cta-inner">
+    <span class="mono-eyebrow">07 · Step into the agora</span>
+    <h2 style="margin-top:18px">PICK A SIDE.<br><em>win the table.</em></h2>
+    <p>Coming free to iOS and Android. No accounts. No ads mid-round. Just a phone, a table, and the only argument that matters tonight.</p>
+    <div class="store-buttons">
+      <a class="store disabled" aria-disabled="true" tabindex="-1" aria-label="Download on the App Store — Coming soon" href="#">
+        <span class="pill soon">Coming soon</span>
+        <img src="assets/app-store-badge.svg" alt="Download on the App Store" />
+      </a>
+      <a class="store" aria-label="Get it on Google Play — Open testing" href="https://play.google.com/store/apps/details?id=com.zipangulu.witsagora" rel="noopener">
+        <span class="pill">Open testing</span>
+        <img src="assets/google-play-badge.svg" alt="Get it on Google Play" />
+      </a>
+    </div>
+    <div class="cta-fineprint">Android · Open testing live · iOS · In the wings</div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer>
+  <div class="ft">
+    <div>
+      <div class="brand" style="gap:10px">
+        <img src="assets/brandmark.png" alt="" />
+        <div class="wm" style="font-family:'Bebas Neue';font-size:22px;letter-spacing:0.12em"><span style="color:var(--pro)">WITS</span><span style="color:var(--con)">AGORA</span></div>
+      </div>
+      <p class="about">A pass-and-play debate party game for the modern table. Two debaters, one motion. The audience decides who wins.</p>
+    </div>
+    <div>
+      <h5>Product</h5>
+      <ul>
+        <li><a href="#concept">Concept</a></li>
+        <li><a href="#how">How it plays</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#scoring">Scoring</a></li>
+        <li><a href="#topics">Topics</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Download</h5>
+      <ul>
+        <li><a href="https://play.google.com/store/apps/details?id=com.zipangulu.witsagora" rel="noopener">Android · Google Play</a></li>
+        <li><span style="color:var(--ink-mute)">iOS · Coming soon</span></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Legal</h5>
+      <ul>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="data-deletion.html">Data deletion</a></li>
+        <li><a href="mailto:support@witsagora.com">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <span>&copy; 2026 WitsAgora</span>
+  </div>
+</footer>
+
+<script>
+  // reveal on scroll
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // cycle phone screenshots
+  (function(){
+    const slides = document.querySelectorAll('#phone-slides .slide');
+    if(slides.length < 2) return;
+    let i = 0;
+    setInterval(()=>{
+      slides[i].classList.remove('on');
+      i = (i+1) % slides.length;
+      slides[i].classList.add('on');
+    }, 2600);
+  })();
+</script>
 </body>
 </html>
