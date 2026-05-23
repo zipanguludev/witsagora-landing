@@ -748,11 +748,11 @@
     <h2 style="margin-top:18px">PICK A SIDE.<br><em>win the table.</em></h2>
     <p>Free on iOS and Android. No accounts. No ads mid-round. Just a phone, a table, and the only argument that matters tonight.</p>
     <div class="store-buttons">
-      <a class="store" aria-label="Join the iOS beta on TestFlight" href="https://testflight.apple.com/join/sxQNDGKK" rel="noopener" target="_blank">
+      <a class="store" aria-label="Join the iOS beta on TestFlight" href="https://testflight.apple.com/join/sxQNDGKK" rel="noopener" target="_blank" data-download-platform="ios" data-download-location="cta">
         <span class="pill">TestFlight beta</span>
         <img src="assets/app-store-badge.svg" alt="Join the iOS beta on TestFlight" />
       </a>
-      <a class="store" aria-label="Get it on Google Play — Open testing" href="https://play.google.com/store/apps/details?id=com.zipangulu.witsagora" rel="noopener">
+      <a class="store" aria-label="Get it on Google Play — Open testing" href="https://play.google.com/store/apps/details?id=com.zipangulu.witsagora" rel="noopener" data-download-platform="android" data-download-location="cta">
         <span class="pill">Open testing</span>
         <img src="assets/google-play-badge.svg" alt="Get it on Google Play" />
       </a>
@@ -784,8 +784,8 @@
     <div>
       <h5>Download</h5>
       <ul>
-        <li><a href="https://play.google.com/store/apps/details?id=com.zipangulu.witsagora" rel="noopener">Android · Google Play</a></li>
-        <li><a href="https://testflight.apple.com/join/sxQNDGKK" rel="noopener" target="_blank">iOS · TestFlight beta</a></li>
+        <li><a href="https://play.google.com/store/apps/details?id=com.zipangulu.witsagora" rel="noopener" data-download-platform="android" data-download-location="footer">Android · Google Play</a></li>
+        <li><a href="https://testflight.apple.com/join/sxQNDGKK" rel="noopener" target="_blank" data-download-platform="ios" data-download-location="footer">iOS · TestFlight beta</a></li>
       </ul>
     </div>
     <div>
@@ -819,6 +819,20 @@
       i = (i+1) % slides.length;
       slides[i].classList.add('on');
     }, 2600);
+  })();
+
+  // track download button clicks
+  (function(){
+    document.querySelectorAll('[data-download-platform]').forEach(el=>{
+      el.addEventListener('click', ()=>{
+        if(typeof gtag !== 'function') return;
+        gtag('event', 'download_click', {
+          platform: el.dataset.downloadPlatform,
+          location: el.dataset.downloadLocation,
+          link_url: el.href
+        });
+      });
+    });
   })();
 </script>
 </body>
