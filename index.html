@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>WitsAgora — The Debate Party Game</title>
-<meta name="description" content="Pass-and-play debate party game for Android and iOS. Two debaters, one motion, the audience decides. 3 to 10 players, on a single phone." />
+<title>WitsAgora — Debate Party Game for 3 to 10 Players</title>
+<meta name="description" content="Free pass-and-play debate party game for 3 to 10 players on one phone. Two debaters, one motion — the audience votes and the biggest margin wins. iOS and Android." />
 <meta name="keywords" content="debate party game, pass and play, party game, Android party game, iOS party game, debate game, group game, multiplayer phone game, family game, dinner party game, witsagora, debate app, argument game" />
 <meta name="author" content="Claudio Pellegrino" />
 <meta name="theme-color" content="#0A0A14" />
@@ -12,6 +12,9 @@
 <meta name="apple-mobile-web-app-title" content="WitsAgora" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
 <link rel="canonical" href="https://witsagora.com/" />
+
+<!-- preload LCP hero image -->
+<link rel="preload" as="image" href="assets/home_dark.png" fetchpriority="high" />
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png" />
@@ -28,6 +31,7 @@
 <meta property="og:image:alt" content="WitsAgora — two debaters facing off, Pro in orange and Con in indigo, on a dark editorial background." />
 <meta property="og:site_name" content="WitsAgora" />
 <meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="it_IT" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="WitsAgora — The Debate Party Game" />
 <meta name="twitter:description" content="Two debaters. One motion. The audience decides who wins." />
@@ -78,6 +82,106 @@
     "priceCurrency": "EUR"
   },
   "featureList": "Pass-and-play multiplayer, 3 to 10 players on one phone, Random motion drawing, Configurable turn timer 15 to 180 seconds, Optional replies and rebuttals, Qualitative verdict labels, Continuous scoring formula based on margin, Offline gameplay, No accounts required"
+}
+</script>
+
+<!-- JSON-LD: site, brand and FAQ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://witsagora.com/#website",
+      "name": "WitsAgora",
+      "alternateName": "WitsAgora — Debate Party Game",
+      "url": "https://witsagora.com/",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://witsagora.com/#brand" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://witsagora.com/#brand",
+      "name": "WitsAgora",
+      "url": "https://witsagora.com/",
+      "logo": "https://witsagora.com/assets/favicon-512.png",
+      "founder": { "@type": "Person", "name": "Claudio Pellegrino" },
+      "sameAs": [
+        "https://play.google.com/store/apps/details?id=com.zipangulu.witsagora",
+        "https://apps.apple.com/it/app/witsagora/id6770296707"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://witsagora.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is WitsAgora?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "WitsAgora is a pass-and-play debate party game for 3 to 10 players on a single phone. Two players are drawn as Pro and Con on a random motion, they argue under a timer, and everyone else votes — the bigger the margin, the bigger the score."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many people can play?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "From 3 to 10 players, all sharing one phone. There is no second screen and no online lobby: you pass the phone around the table, which makes it ideal for game nights, dinner parties and road trips."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is WitsAgora free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. WitsAgora is free to download on the App Store and Google Play, with no account required and no ads in the middle of a round."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it need an internet connection?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. WitsAgora is a fully offline party game. Once it is installed you can play anywhere — no sign-up, no Wi-Fi and no data needed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What kind of debate topics are included?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dozens of motions across light, sharp and absurd registers — from whether cold pizza counts as breakfast to whether social networks should be banned for under-sixteens. The app draws one at random each round, so no two games feel the same."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is the winner decided?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "After both speakers argue, every other player votes for a side. The winning speaker scores +1 plus the vote margin, so persuading the whole table is worth far more than scraping a narrow win. Optional verdict labels reward insight and punish derailing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What age is WitsAgora for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is rated 13+ and works for adults and families alike — at parties, around the dinner table, or as a classroom and debate-club warm-up."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is it different from card or board debate games?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "There is nothing to print, shuffle or lose. WitsAgora is a digital take on the classic party game for people who love to argue: motions, timers, voting and scoring are all handled on one phone, so you can start a round in seconds."
+          }
+        }
+      ]
+    }
+  ]
 }
 </script>
 
@@ -157,6 +261,7 @@
   .h-title{font-size:clamp(96px,16vw,228px);margin:0;letter-spacing:-0.005em}
   .h-title .pro{color:var(--pro);display:block}
   .h-title .con{color:var(--con);display:block;margin-top:-0.05em}
+  .h-title .sub{display:block;font-family:"Sora",sans-serif;font-size:clamp(16px,2.3vw,22px);font-weight:500;letter-spacing:0.01em;line-height:1.3;color:var(--ink-dim);margin-top:22px}
 
   .h-divider{display:flex;align-items:center;gap:18px;margin-top:42px}
   .h-divider .accent{width:36px;height:2px;background:var(--pro)}
@@ -358,6 +463,17 @@
   .topic .meta{display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-mute);margin-top:auto}
   .topic .meta .cat{color:var(--ink-dim)}
 
+  /* ---- faq ---- */
+  .faq{background:linear-gradient(180deg,var(--bg-2),var(--bg))}
+  .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px}
+  @media (max-width:820px){.faq-grid{grid-template-columns:1fr}}
+  .faq-item{padding:30px;border:1px solid var(--line);border-radius:18px;background:var(--bg-3);transition:border-color .25s}
+  .faq-item:hover{border-color:var(--line-strong)}
+  .faq-item h3{font-family:"Bebas Neue",sans-serif;font-size:26px;letter-spacing:0.03em;color:var(--ink);margin:0 0 12px;line-height:1.05}
+  .faq-item p{margin:0;color:var(--ink-dim);font-size:14px;line-height:1.6}
+  .faq-item p a{color:var(--pro)}
+  .faq-item p a:hover{text-decoration:underline}
+
   /* ---- scoring section ---- */
   .scoring{padding:120px 28px;background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .scoring-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center}
@@ -422,6 +538,7 @@
     <a href="#features">Features</a>
     <a href="#scoring">Scoring</a>
     <a href="#topics">Topics</a>
+    <a href="#faq">FAQ</a>
   </div>
   <a class="navcta" href="#download"><span class="dot"></span>Get the app</a>
 </nav>
@@ -441,6 +558,7 @@
       <h1 class="display h-title">
         <span class="pro">WITS</span>
         <span class="con">AGORA</span>
+        <span class="sub">The debate party game for 3 to 10 players.</span>
       </h1>
 
       <div class="h-divider">
@@ -475,7 +593,7 @@
         <div class="notch"></div>
         <div class="screen">
           <div class="slides" id="phone-slides">
-            <div class="slide on"><img src="assets/home_dark.png" alt="WitsAgora home screen" /></div>
+            <div class="slide on"><img src="assets/home_dark.png" alt="WitsAgora debate party game home screen" fetchpriority="high" decoding="async" width="270" height="580" /></div>
             <div class="slide"><img src="assets/start_round_dark.png" alt="Round start screen" /></div>
             <div class="slide"><img src="assets/round_pro.png" alt="Pro turn screen" /></div>
             <div class="slide"><img src="assets/round_contro.png" alt="Con turn screen" /></div>
@@ -599,10 +717,10 @@
     </div>
     <div class="duel-phones reveal">
       <div class="phone-sm left">
-        <div class="scr"><img src="assets/round_pro.png" alt="Pro turn screen"/></div>
+        <div class="scr"><img src="assets/round_pro.png" alt="WitsAgora Pro speaker turn screen" loading="lazy" decoding="async"/></div>
       </div>
       <div class="phone-sm right">
-        <div class="scr"><img src="assets/round_contro.png" alt="Con turn screen"/></div>
+        <div class="scr"><img src="assets/round_contro.png" alt="WitsAgora Con speaker turn screen" loading="lazy" decoding="async"/></div>
       </div>
     </div>
   </div>
@@ -749,11 +867,56 @@
   </div>
 </section>
 
+<!-- ============== FAQ ============== -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="mono-eyebrow">07 · Questions</span>
+      <h2 class="display">DEBATE PARTY GAME,<br>EXPLAINED.</h2>
+      <p style="color:var(--ink-dim);max-width:560px;margin-top:8px">Everything worth knowing before the first motion is drawn.</p>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item reveal">
+        <h3>What is WitsAgora?</h3>
+        <p>WitsAgora is a pass-and-play debate party game for 3 to 10 players on a single phone. Two players are drawn as Pro and Con on a random motion, they argue under a timer, and everyone else votes — the bigger the margin, the bigger the score.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h3>How many people can play?</h3>
+        <p>From 3 to 10 players, all sharing one phone. There is no second screen and no online lobby: you pass the phone around the table, which makes it ideal for game nights, dinner parties and road trips.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h3>Is WitsAgora free?</h3>
+        <p>Yes. WitsAgora is free to download on the <a href="https://apps.apple.com/it/app/witsagora/id6770296707" rel="noopener" target="_blank">App Store</a> and <a href="https://play.google.com/store/apps/details?id=com.zipangulu.witsagora" rel="noopener">Google Play</a>, with no account required and no ads in the middle of a round.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h3>Does it need an internet connection?</h3>
+        <p>No. WitsAgora is a fully offline party game. Once it is installed you can play anywhere — no sign-up, no Wi-Fi and no data needed.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h3>What kind of debate topics are included?</h3>
+        <p>Dozens of motions across light, sharp and absurd registers — from whether cold pizza counts as breakfast to whether social networks should be banned for under-sixteens. The app draws one at random each round, so no two games feel the same.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h3>How is the winner decided?</h3>
+        <p>After both speakers argue, every other player votes for a side. The winning speaker scores +1 plus the vote margin, so persuading the whole table is worth far more than scraping a narrow win. Optional verdict labels reward insight and punish derailing.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h3>What age is WitsAgora for?</h3>
+        <p>It is rated 13+ and works for adults and families alike — at parties, around the dinner table, or as a classroom and debate-club warm-up.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h3>How is it different from card or board debate games?</h3>
+        <p>There is nothing to print, shuffle or lose. WitsAgora is a digital take on the classic party game for people who love to argue: motions, timers, voting and scoring are all handled on one phone, so you can start a round in seconds.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============== DOWNLOAD CTA ============== -->
 <section class="cta" id="download">
   <div class="cta-orb" aria-hidden="true"></div>
   <div class="cta-inner">
-    <span class="mono-eyebrow">07 · Step into the agora</span>
+    <span class="mono-eyebrow">08 · Step into the agora</span>
     <h2 style="margin-top:18px">PICK A SIDE.<br><em>win the table.</em></h2>
     <p>Free on iOS and Android. No accounts. No ads mid-round. Just a phone, a table, and the only argument that matters tonight.</p>
     <div class="store-buttons">
@@ -776,7 +939,7 @@
         <img src="assets/brandmark.png" alt="" />
         <div class="wm" style="font-family:'Bebas Neue';font-size:22px;letter-spacing:0.12em"><span style="color:var(--pro)">WITS</span><span style="color:var(--con)">AGORA</span></div>
       </div>
-      <p class="about">A pass-and-play debate party game for the modern table. Two debaters, one motion. The audience decides who wins.</p>
+      <p class="about">WitsAgora is a free pass-and-play debate party game for 3 to 10 players on one phone. Two debaters, one motion — the audience decides who wins. Made for game nights, dinner parties, road trips and classrooms.</p>
     </div>
     <div>
       <h5>Product</h5>
@@ -786,6 +949,7 @@
         <li><a href="#features">Features</a></li>
         <li><a href="#scoring">Scoring</a></li>
         <li><a href="#topics">Topics</a></li>
+        <li><a href="#faq">FAQ</a></li>
       </ul>
     </div>
     <div>
